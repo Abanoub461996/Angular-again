@@ -1,0 +1,10 @@
+<p [ngStyle]="{'visibility':isActive?'visible':'hidden'}">temp works!</p>
+
+<h3>{{isActive}}</h3>
+
+<ul *ngFor="let ltr of books, let i = index">
+    <!-- <li>{{ltr}}</li> -->
+    <ng-template [ngIf]="i">{{ltr}}</ng-template>
+</ul>
+
+<button class="border-t-neutral-600 p-3 bg-slate-900 text-white" (click)="increment()">increase</button>
