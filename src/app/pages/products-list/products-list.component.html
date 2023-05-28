@@ -1,6 +1,5 @@
 <div class="grid grid-cols-1 md:grid-cols-3 gap-10 w-[calc(90%)] my-2 mx-auto" >
   <ng-template ngFor let-product [ngForOf]="products" let-i="index">
-      <app-product-card [product]="product"></app-product-card>
+      <app-product-card [product]="product" (sendProduct)="receiveProduct($event)"></app-product-card>
   </ng-template>
-  
 </div>

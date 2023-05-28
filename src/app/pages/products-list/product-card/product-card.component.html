@@ -1,0 +1,22 @@
+<article (click)="showDetails()" class="flex flex-col justify-between basis-1/4 md:basis-1/3 sm:basis-1/2 xs:basis-1 rounded-lg overflow-hidden bg-indigo-100" *ngIf="product"> 
+  <div
+    class="w-full border-gray-600 mb-5">
+    <img [src]="product.images[0]" alt="" />
+  </div>
+  <div class="uf">
+    <div class="justify-start items-end flex gap-6 w-[95%] mx-auto">
+      <time datetime="2020-03-16" class="text-xs italic">{{
+        product.creationAt | date: 'mediumDate'
+      }}</time>
+      <a href="#" class="text-sm font-semibold">{{ product.category.name }}</a>
+    </div>
+    <div class="my-2 w-[95%] mx-auto">
+      <h3 class="">
+        <span class="text-md font-semibold">{{ product.title }}</span>
+      </h3>
+      <p class="text-xs font-normal">
+        {{ product.description | shortentext: 60 }}
+      </p>
+    </div>
+  </div>
+</article>
