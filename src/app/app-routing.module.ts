@@ -7,10 +7,12 @@ import { ProductsListComponent } from './pages/products-list/products-list.compo
 import { ErrorPageComponent } from './layouts/error-page/error-page.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 
 const routes: Routes = [{ path: '', component: ProductsListComponent },
 { path: 'products/:id', pathMatch: 'full',component: ProductDetailsComponent },
 { path: 'login', pathMatch: 'full',component: LoginComponent },
+{ path: 'register', pathMatch: 'full',component: RegisterComponent },
 
 { path: '**', component:ErrorPageComponent},
 ]

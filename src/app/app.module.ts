@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './layouts/error-page/error-page.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 // Components
@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 // Pipes
 import { ShortentextPipe } from './core/pipes/shortentext.pipe';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { RegisterComponent } from './pages/auth/register/register.component';
 
 
 @NgModule({
@@ -24,11 +25,13 @@ import { LoginComponent } from './pages/auth/login/login.component';
     ShortentextPipe,
     ErrorPageComponent,
     ProductDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],

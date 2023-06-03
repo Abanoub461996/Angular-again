@@ -15,4 +15,7 @@ export class LoginComponent {
   loginSubmit(loginForm:NgForm):void {
     console.log('loginForm',loginForm.form.value);
   }
+  logmail(mail:any):void {
+    console.log({mail});
+  }
 }
