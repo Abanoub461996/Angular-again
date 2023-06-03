@@ -1,0 +1,13 @@
+<form #loginForm="ngForm" (ngSubmit)="loginSubmit(loginForm)"  class="text-white font-bold">
+    <div class="input__field flex flex-col gap-2 mb-4">
+        <label for="email">Your Email</label>
+        <input type="text" class="w-[50%] text-gray-600" name="email" #email="ngModel" ngModel>
+    </div>
+    <div class="input__field flex-col gap-2 flex">
+        <label for="password">Your Passowrd</label>
+        <input type="text" class="w-[50%] text-gray-600" name="password" #password="ngModel" ngModel>
+    </div>
+    <button type="submit" class="w-[20%] text-gray-600 bg-cyan-300 rounded-md mt-3">Submit</button>
+
+
+</form>
