@@ -17,18 +17,22 @@ export class RegisterComponent {
         '',
         [Validators.required, Validators.minLength(3), Validators.pattern('')],
       ],
-      // registerUser: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10), Validators.pattern('^\\S*$')]],
       registerEmail: ['', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       registerPass: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$')]],
-      registerConfirmPass: ['', [Validators.required]],
-
+      registerConfirmPass: ['', [Validators.required]]
+    },{
+      validator: this.passwordsMatched
     })
+  }
+  passwordsMatched(fm: FormGroup) {
+    return fm.controls['registerPass'].value == fm.controls['registerConfirmPass'].value ? null : { mismatch: true }
   }
   get registerFormControls() {
     return this.registerForm.controls;
   }
   handleRegister():void{
-    console.log(this.registerForm.value);
+    const userData:any={...this.registerForm.value,"avatar": "https://api.lorem.space/image/face?w=640&h=480&r=867"}
+    console.log(userData);
     
   }
 

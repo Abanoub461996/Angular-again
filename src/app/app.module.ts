@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ErrorPageComponent } from './layouts/error-page/error-page.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 // Components
 import { AppComponent } from './app.component';
 import { TempComponent } from './components/temp/temp.component';
@@ -14,6 +15,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ShortentextPipe } from './core/pipes/shortentext.pipe';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { RegisterComponent } from './pages/auth/register/register.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { LoadingInterceptor } from './core/services/api/loading.interceptor';
 
 
 @NgModule({
@@ -26,15 +30,20 @@ import { RegisterComponent } from './pages/auth/register/register.component';
     ErrorPageComponent,
     ProductDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NavbarComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
