@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  configUrl = 'https://api.escuelajs.co/api/';
+  configUrl = 'https://api.escuelajs.co/api/v1';
   constructor(private http:HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
@@ -17,11 +17,11 @@ export class AuthenticationService {
   };
 
   login(data:LoginUser):Observable<any>{
-    return this.http.post(`${this.configUrl}v1/auth/login`,data)
+    return this.http.post(`${this.configUrl}/auth/login`,data)
   }
 
-  register(data:registerUser):any{
-    this.http.post(this.configUrl,data)
+  register(data:registerUser):Observable<any>{
+    return this.http.post(`${this.configUrl}/users`,data)
   }
 
    // Error handling
