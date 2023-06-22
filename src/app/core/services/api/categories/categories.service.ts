@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginUser, registerUser } from 'src/app/core/interfaces/user';
 import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { Category } from 'src/app/core/interfaces/category';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService {
+export class CategoriesService {
+
   configUrl = 'https://api.escuelajs.co/api/v1';
   constructor(private http:HttpClient) { }
   httpOptions = {
@@ -15,13 +15,8 @@ export class AuthenticationService {
       'Content-Type': 'application/json',
     }),
   };
-
-  login(data:LoginUser):Observable<any>{
-    return this.http.post(`${this.configUrl}/auth/login`,data)
-  }
-
-  register(data:registerUser):Observable<any>{
-    return this.http.post(`${this.configUrl}/users`,data)
+  getCategories():Observable<any>{
+    return this.http.get<Category[]>(`${this.configUrl}/categories`)
   }
 
    // Error handling

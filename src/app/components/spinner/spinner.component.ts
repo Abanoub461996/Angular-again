@@ -7,5 +7,8 @@ import { LoaderService } from 'src/app/core/services/loader/loader.service';
   styleUrls: ['./spinner.component.css']
 })
 export class SpinnerComponent {
-  constructor(public loader: LoaderService) { }
+  loading:boolean;
+  constructor(public loader: LoaderService) { 
+    this.loading = this.loader.getLoading();
+  }
 }

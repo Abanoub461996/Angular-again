@@ -18,6 +18,10 @@ import { RegisterComponent } from './pages/auth/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { LoadingInterceptor } from './core/services/api/loading.interceptor';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ProductsPageComponent } from './pages/products-page/products-page.component';
+import { CategoriesComponent } from './pages/categories/categories.component';
+import { HomeCatigoryComponent } from './pages/categories/home-catigory/home-catigory.component';
 
 
 @NgModule({
@@ -32,7 +36,11 @@ import { LoadingInterceptor } from './core/services/api/loading.interceptor';
     LoginComponent,
     RegisterComponent,
     NavbarComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    SidebarComponent,
+    ProductsPageComponent,
+    CategoriesComponent,
+    HomeCatigoryComponent
   ],
   imports: [
     BrowserModule,
