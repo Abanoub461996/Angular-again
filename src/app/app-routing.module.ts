@@ -14,6 +14,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 
 const routes: Routes = [{ path: '', component: CategoriesComponent },
 { path: 'products', pathMatch: 'full',component: ProductsPageComponent },
+{ path: 'categories/:id', pathMatch: 'full',component: ProductsPageComponent },
 { path: 'products/:id', pathMatch: 'full',component: ProductDetailsComponent },
 { path: 'login', pathMatch: 'full',component: LoginComponent },
 { path: 'register', pathMatch: 'full',component: RegisterComponent },

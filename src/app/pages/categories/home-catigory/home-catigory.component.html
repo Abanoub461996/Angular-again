@@ -1,11 +1,28 @@
-<div class="category__container w-[80%] mx-auto flex flex-col items-center border-b-2 border-lime-200 drop-shadow-lg p-5">
-    <figure class="category__image w-[10em] mx-auto border-spacing-2 border-lime-500 rounded-[50%] overflow-hidden">
-        <img [src]="category.image" class="" alt="">
-    </figure>
-    <div class="category__title text-lg font-bold text-lime-700 drop-shadow-lg">
-       {{category.name}}
-    </div>
-    <div class="category__samples">
+<div
+  class="category__container w-[80%] mx-auto flex flex-col items-center border-b-2 border-lime-200 drop-shadow-lg p-8 mb-5"
 
-    </div>
+>
+  <figure (click)="showCategory()"
+    class="category__image w-[10em] mx-auto border-spacing-2 border-lime-500 rounded-[50%] overflow-hidden cursor-pointer"
+  >
+    <img [src]="category.image" class="" alt="" />
+  </figure>
+  <div class="category__title text-lg font-bold text-lime-700 drop-shadow-lg mb-4 cursor-pointer" (click)="showCategory()">
+    {{ category.name }}
+  </div>
+  <div class="category__samples flex gap-5 justify-between">
+    <ng-template ngFor let-sample [ngForOf]="categorySamples" let-i="index">
+      <div class="category__smaple flex flex-col items-start justify-between">
+        <div>
+          <figure class="sample__image rounded-lg overflow-hidden">
+            <img [src]="sample.images[0]" alt="" />
+          </figure>
+          <div class="smaple__name text-sm font-semibold mt-4">
+            {{ (sample.title).slice(0,sample.title.lastIndexOf(' ')) }}
+          </div>
+        </div>
+        <div class="sample__price text-xs font-medium mt-2">{{ sample.price | currency}}</div>
+      </div>
+    </ng-template>
+  </div>
 </div>

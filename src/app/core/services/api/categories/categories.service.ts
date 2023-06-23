@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Category } from 'src/app/core/interfaces/category';
+import { Product } from 'src/app/core/interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,12 @@ export class CategoriesService {
   };
   getCategories():Observable<any>{
     return this.http.get<Category[]>(`${this.configUrl}/categories`)
+  }
+  getCategorySamples(id:number):Observable<any>{
+    return this.http.get<Product[]>(`${this.configUrl}/categories/${id}/products`,{params:{offset:0,limit:5}})
+  }
+  getCategoryProducts(id:number):Observable<any>{
+    return this.http.get<Product[]>(`${this.configUrl}/categories/${id}/products`)
   }
 
    // Error handling
