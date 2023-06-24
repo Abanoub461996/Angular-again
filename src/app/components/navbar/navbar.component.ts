@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/core/services/cart.service';
+import { Store } from '@ngrx/store';
+
+
+
+
 import {
   Collapse,
   Dropdown,
   initTE,
 } from "tw-elements";
+import { userStore } from 'src/app/core/interfaces/user';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +19,8 @@ import {
 })
 export class NavbarComponent {
   cartCounter:number;
-  constructor(private cartService: CartService){
+  userData:userStore;
+  constructor(private cartService: CartService,private store:Store<any>){
   }
 
   ngOnInit():void{
@@ -22,6 +29,9 @@ export class NavbarComponent {
     this.cartService.cartItems.subscribe(value=>{
       this.cartCounter = value;
     });
+    this.store.select('user').subscribe(value=>{
+      this.userData= value;
+    })
   }
   logout():void{
     console.log('logging out');

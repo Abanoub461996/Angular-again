@@ -10,3 +10,12 @@ export interface registerUser{
     confirmPassword:string;
     name:string;
 }
+
+export interface userStore {
+  id: number;
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+  avatar: string;
+}

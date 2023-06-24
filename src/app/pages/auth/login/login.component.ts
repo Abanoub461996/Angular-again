@@ -26,7 +26,8 @@ export class LoginComponent {
     ).subscribe(
       data => {console.log(data)// The result of your pipeline
       localStorage.setItem('token',data.access_token);
-      this.router.navigate(['/'])}
+      this.router.navigate(['/'])
+    }
     )
   }
 

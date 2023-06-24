@@ -9,10 +9,13 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class AuthenticationService {
   configUrl = 'https://api.escuelajs.co/api/v1';
+  token = localStorage.getItem('token');
+
   constructor(private http:HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
+      "Authorization": `Bearer ${this.token}`
     }),
   };
 
@@ -22,6 +25,12 @@ export class AuthenticationService {
 
   register(data:registerUser):Observable<any>{
     return this.http.post(`${this.configUrl}/users`,data)
+  }
+
+  authToken():Observable<any>{
+    const headers = new HttpHeaders({"Authorization": `Bearer ${this.token}`});
+    return this.http.get(`https://api.escuelajs.co/api/v1/auth/profile`,this.httpOptions)
+
   }
 
    // Error handling
