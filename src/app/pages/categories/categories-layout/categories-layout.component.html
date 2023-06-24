@@ -1,5 +1,4 @@
-<app-navbar class="sticky top-0"></app-navbar>
-<div>
+<app-navbar class="sticky top-0 z-50"></app-navbar>
 
 <button
   data-drawer-target="separator-sidebar"
@@ -277,9 +276,10 @@
 
 <div class="p-4 sm:ml-64">
 
-  <app-products-list [products]="categoryProds"></app-products-list>
+        <router-outlet></router-outlet>
 </div>
 
-</div>
+
+
 
 

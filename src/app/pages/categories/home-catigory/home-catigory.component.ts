@@ -13,6 +13,7 @@ import { CategoriesService } from 'src/app/core/services/api/categories/categori
 export class HomeCatigoryComponent {
   categorySamples:Product[];
   @Input() category:Category = categoryInit;
+  
   constructor(private categoriesService:CategoriesService,private router:Router){}
   ngOnInit():void{
     this.categoriesService.getCategorySamples(this.category.id).pipe(map(data=>{
@@ -20,14 +21,12 @@ export class HomeCatigoryComponent {
     })
     )
     .subscribe(data =>{
-      console.log(data);
-      
       this.categorySamples = data;
     })
     
   }
   showCategory(){
-    this.router.navigate([`categories/${this.category.id}`])
+    this.router.navigate([`categories/`,this.category.id])
   }
 
 }

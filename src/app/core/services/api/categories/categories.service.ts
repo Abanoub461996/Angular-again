@@ -22,7 +22,7 @@ export class CategoriesService {
   getCategorySamples(id:number):Observable<any>{
     return this.http.get<Product[]>(`${this.configUrl}/categories/${id}/products`,{params:{offset:0,limit:5}})
   }
-  getCategoryProducts(id:number):Observable<any>{
+  getCategoryProducts(id:number):Observable<Product[]>{
     return this.http.get<Product[]>(`${this.configUrl}/categories/${id}/products`)
   }
 
