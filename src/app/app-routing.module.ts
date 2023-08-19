@@ -4,22 +4,31 @@ import { RouterModule, Routes } from '@angular/router';
 // Components
 import { ErrorPageComponent } from './layouts/error-page/error-page.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
-import { LoginComponent } from './pages/auth/login/login.component';
-import { RegisterComponent } from './pages/auth/register/register.component';
+import { authGuard } from './core/authguard/authguard.guard';
+import { authRoutes } from './pages/auth/auth-routing.module';
+import { CategoriesMainComponent } from './pages/categories/categories-main/categories-main.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'categories'},
   {
-    path: 'categories',
-    loadChildren: () => import('./pages/categories/categories.module').then((m) => m.CategoriesModule),
+    path: '',
+    component: CategoriesMainComponent,
+    children: [
+      {
+        path: 'categories',
+        canActivate: [authGuard],
+        loadChildren: () =>
+          import('./pages/categories/categories.module').then(
+            (m) => m.CategoriesModule
+          ),
+      },
+      {
+        path: 'products/:id',
+        pathMatch: 'full',
+        component: ProductDetailsComponent,
+      },
+    ],
   },
-  {
-    path: 'products/:id',
-    pathMatch: 'full',
-    component: ProductDetailsComponent,
-  },
-  { path: 'login', pathMatch: 'full', component: LoginComponent },
-  { path: 'register', pathMatch: 'full', component: RegisterComponent },
+  ...authRoutes,
 
   { path: '**', component: ErrorPageComponent },
 ];

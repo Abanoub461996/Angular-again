@@ -1,7 +1,7 @@
 import { userStore } from '../../interfaces/user';
 import { SetUserAction } from './user.action';
-
-const userInit: userStore = {
+import { createReducer } from '@ngrx/store/src';
+export const userInit: Readonly<userStore> = {
   id: 0,
   email: '',
   password: '',
@@ -9,7 +9,11 @@ const userInit: userStore = {
   role: '',
   avatar: '',
 };
-export function UserReducer(state = userInit, action: SetUserAction):userStore {
+
+export function UserReducer(
+  state: userStore = userInit,
+  action: SetUserAction
+) :userStore{
   switch (action.type) {
     case 'SET_USER_DATA':
       return {
@@ -17,6 +21,6 @@ export function UserReducer(state = userInit, action: SetUserAction):userStore {
         ...action.payload,
       };
     default:
-      return {...state};
+      return { ...state };
   }
 }

@@ -1,5 +1,6 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { map } from 'rxjs';
 import { AuthenticationService } from 'src/app/core/services/api/auth/authentication.service';
@@ -8,7 +9,10 @@ import { AuthenticationService } from 'src/app/core/services/api/auth/authentica
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  standalone:true,
+  imports:[ReactiveFormsModule,CommonModule],
+  providers:[FormBuilder,AuthenticationService,Router]
 })
 export class RegisterComponent {
   registerForm: FormGroup;
