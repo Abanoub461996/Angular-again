@@ -9,7 +9,7 @@ import { CategoriesService } from 'src/app/core/services/api/categories/categori
   styleUrls: ['./categories-main.component.css'],
 })
 export class CategoriesMainComponent {
-  categories: Category[];
+  categories!: Category[];
   constructor(private categoriesService: CategoriesService) {}
 
   ngOnInit() {

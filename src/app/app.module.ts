@@ -10,13 +10,13 @@ import { ActionReducer, ActionReducerMap, StoreModule } from '@ngrx/store';
 
 // Components
 import { AppComponent } from './app.component';
-import { TempComponent } from './components/temp/temp.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ErrorPageComponent } from './layouts/error-page/error-page.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { UserReducer } from './core/store/user/user.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouterOutlet } from '@angular/router';
 
 // Pipes
 
@@ -25,7 +25,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 @NgModule({
   declarations: [
     AppComponent,
-    TempComponent,
     ErrorPageComponent,
     ProductDetailsComponent,
     SpinnerComponent,
@@ -37,6 +36,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    RouterOutlet,
     StoreModule.forRoot({user:UserReducer as ActionReducer<any|any>}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

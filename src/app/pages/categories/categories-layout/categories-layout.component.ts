@@ -11,7 +11,7 @@ import { userStore } from 'src/app/core/interfaces/user';
   styleUrls: ['./categories-layout.component.css'],
 })
 export class CategoriesLayoutComponent {
-  userData: userStore;
+  userData!: userStore;
   constructor() {}
 
   ngOnInit(): void {

@@ -15,7 +15,7 @@ import { userInit } from 'src/app/core/store/user/user.reducer';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  cartCounter: number;
+  cartCounter!: number;
   userData: userStore = userInit;
 
   constructor(

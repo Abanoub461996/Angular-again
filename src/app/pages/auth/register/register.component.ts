@@ -15,7 +15,7 @@ import { AuthenticationService } from 'src/app/core/services/api/auth/authentica
   providers:[FormBuilder,AuthenticationService,Router]
 })
 export class RegisterComponent {
-  registerForm: FormGroup;
+  registerForm!: FormGroup;
   constructor(private fb: FormBuilder,private auth:AuthenticationService,private router:Router) {}
 
   ngOnInit():void {

@@ -10,8 +10,8 @@ import { CategoriesService } from 'src/app/core/services/api/categories/categori
   templateUrl: './home-catigory.component.html',
   styleUrls: ['./home-catigory.component.css']
 })
-export class HomeCatigoryComponent {
-  categorySamples:Product[];
+export class HomeCategoryComponent {
+  categorySamples!:Product[];
   @Input() category:Category = categoryInit;
   
   constructor(private categoriesService:CategoriesService,private router:Router){}
